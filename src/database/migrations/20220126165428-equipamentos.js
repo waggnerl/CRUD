@@ -1,27 +1,34 @@
-"use strict";
-
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    queryInterface.createTable("photos", {
+  up: (queryInterface, Sequelize) =>
+    queryInterface.createTable("equipamentos", {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      originalname: {
+      nome: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      filename: {
+      patrimonio: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        unique: true,
+      },
+      tipo: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      aluno_id: {
+      status: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      id_setor: {
         type: Sequelize.INTEGER,
         allowNull: true,
         references: {
-          model: "alunos",
+          model: "setors",
           key: "id",
         },
         onDelete: "SET NULL",
@@ -35,10 +42,7 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
-    });
-  },
+    }),
 
-  down: (queryInterface) => {
-    queryInterface.dropTable("photos");
-  },
+  down: (queryInterface) => queryInterface.dropTable("equipamentos"),
 };

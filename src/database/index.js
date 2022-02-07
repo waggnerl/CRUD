@@ -1,10 +1,11 @@
 import { Sequelize } from "sequelize";
 import databaseConfig from "../config/database";
-import Aluno from "../models/Aluno";
+import Contador from "../models/Contador";
+import Setor from "../models/Setor";
+import Equipamento from "../models/Equipamento";
 import User from "../models/User";
-import Foto from "../models/Photo";
 
-const models = [Aluno, User, Foto];
+const models = [Contador, User, Setor, Equipamento];
 const connection = new Sequelize(databaseConfig);
 
 models.forEach((model) => model.init(connection));

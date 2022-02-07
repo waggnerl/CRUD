@@ -5,12 +5,14 @@ import express from "express";
 
 import cors from "cors";
 import helmet from "helmet";
+import delay from "express-delay";
 
-import homeRoutes from "./src/routes/homeRoutes";
 import userRoutes from "./src/routes/userRoutes";
 import tokenRoutes from "./src/routes/tokenRoutes";
-import alunoRoutes from "./src/routes/alunoRoutes";
-import photoRoutes from "./src/routes/photoRoutes";
+import setorRoutes from "./src/routes/setorRoutes";
+import equipamentoRoutes from "./src/routes/equipamentoRoutes";
+import contadorRoutes from "./src/routes/contadorRoutes";
+
 const whiteList = ["http://localhost:3001"];
 
 const corsOptions = {
@@ -33,14 +35,15 @@ class App {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
     this.app.use(helmet());
+    this.app.use(delay(2000));
     this.app.use(cors());
   }
   routes() {
-    this.app.use("/", homeRoutes);
     this.app.use("/users/", userRoutes);
     this.app.use("/tokens/", tokenRoutes);
-    this.app.use("/alunos/", alunoRoutes);
-    this.app.use("/photos/", photoRoutes);
+    this.app.use("/setor/", setorRoutes);
+    this.app.use("/equipamento/", equipamentoRoutes);
+    this.app.use("/contador/", contadorRoutes);
   }
 }
 

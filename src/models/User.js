@@ -1,5 +1,6 @@
 import Sequelize, { Model } from "sequelize";
 import bcryptjs from "bcryptjs";
+
 export default class User extends Model {
   static init(sequelize) {
     super.init(
@@ -36,7 +37,7 @@ export default class User extends Model {
           validate: {
             len: {
               args: [6, 50],
-              msg: "A senha deve ter entre 6 e 50 caracteres",
+              msg: "A senha precisa ter entre 6 e 50 caracteres",
             },
           },
         },
@@ -45,13 +46,16 @@ export default class User extends Model {
         sequelize,
       }
     );
+
     this.addHook("beforeSave", async (user) => {
       if (user.password) {
         user.password_hash = await bcryptjs.hash(user.password, 8);
       }
     });
+
     return this;
   }
+
   passwordIsValid(password) {
     return bcryptjs.compare(password, this.password_hash);
   }
