@@ -11,16 +11,14 @@ import userRoutes from "./src/routes/userRoutes";
 import tokenRoutes from "./src/routes/tokenRoutes";
 import alunoRoutes from "./src/routes/alunoRoutes";
 import photoRoutes from "./src/routes/photoRoutes";
-const whiteList = [
-  "http://localhost:3001",
-];
+const whiteList = ["http://localhost:3001"];
 
 const corsOptions = {
   origin: function (origin, callback) {
-    if(whiteList.indexOf(origin) !== -1 || !origin{
-      callback(null, true)
-    }else{
-      callback(new Error())
+    if (whiteList.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
     }
   },
 };
