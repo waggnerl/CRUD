@@ -16,9 +16,8 @@ module.exports = {
         allowNull: false,
       },
       data: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: false,
-        unique: true,
       },
       id_equipamento: {
         type: Sequelize.INTEGER,

@@ -12,7 +12,6 @@ class ContadorController {
       ],
       order: [["id", "DESC"]],
     });
-
     res.json(contador);
   }
   async store(req, res) {
@@ -30,8 +29,15 @@ class ContadorController {
     try {
       const contador = await User.findByPk(req.params.id);
 
-      const { id, contador_inicial, contador_final, id_equipamento } = contador;
-      return res.json({ id, contador_inicial, contador_final, id_equipamento });
+      const { id, contador_inicial, contador_final, data, id_equipamento } =
+        contador;
+      return res.json({
+        id,
+        contador_inicial,
+        contador_final,
+        data,
+        id_equipamento,
+      });
     } catch (e) {
       return res.json(null);
     }

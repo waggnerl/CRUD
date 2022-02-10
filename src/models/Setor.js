@@ -8,7 +8,7 @@ export default class Setor extends Model {
           type: Sequelize.STRING,
           defaultValue: "",
           unique: {
-            msg: "Patrimônio já cadastrado",
+            msg: "Setor já cadastrado",
           },
         },
       },

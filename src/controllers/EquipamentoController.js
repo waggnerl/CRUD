@@ -7,7 +7,6 @@ class EquipamentoController {
       attributes: ["id", "nome", "patrimonio", "tipo", "status"],
       order: [["id", "DESC"]],
     });
-
     res.json(equipamento);
   }
   async store(req, res) {

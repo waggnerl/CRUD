@@ -15,9 +15,6 @@ export default class Contador extends Model {
         data: {
           type: Sequelize.DATE,
           defaultValue: "",
-          unique: {
-            msg: "Data já cadastrada",
-          },
         },
       },
       {
