@@ -42,6 +42,24 @@ class ContadorController {
       return res.json(null);
     }
   }
+  async delete(req, res) {
+    try {
+      const contador = await Contador.findByPk(req.params.id);
+
+      if (!contador) {
+        return res.status(400).json({
+          errors: ["Contador não existe"],
+        });
+      }
+
+      await contador.destroy();
+      return res.json(null);
+    } catch (e) {
+      return res.status(400).json({
+        errors: e.errors.map((err) => err.message),
+      });
+    }
+  }
 }
 
 export default new ContadorController();
